@@ -1,0 +1,12 @@
+{
+  "log": ["*"],
+  "databases": {
+    "moviesapp": {
+      "server": "http://couchbase-server:8091",
+      "bucket": "moviesapp",
+      "users": {
+        "GUEST": {"disabled": false, "admin_channels": ["*"]}
+      }
+    }
+  }
+}
