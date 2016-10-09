@@ -85,16 +85,15 @@ export default class App extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text style={styles.seqTextLabel}>
           The database sequence: {this.state.sequence}
         </Text>
-        <Text>
-          Movies published in 2004: {this.state.filteredMovies}
-        </Text>
-        <Text>
-          MOVIES: {this.state.data.length}
-        </Text>
+        { this.state.filteredMovies.length > 0 &&
+          <Text>
+            Movies published in 2004: {this.state.filteredMovies}
+          </Text>
+        }
         <ListMovies
           data={this.state.dataSource}
           style={styles.listView}
@@ -105,11 +104,15 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   seqTextLabel: {
     textAlign: 'center',
     margin: 5
   },
   listView: {
+    flex: 1,
     backgroundColor: '#F5FCFF',
   },
 });

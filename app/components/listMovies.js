@@ -10,8 +10,10 @@ export default class ListMovies extends Component {
   render() {
     return (
       <ListView
+        style={this.props.style}
         dataSource={this.props.data}
         renderRow={(rowData, sectionID, rowID, highlightRow) => <Movie key={rowID} data={rowData} />}
+        enableEmptySections
       />
     )
   }
