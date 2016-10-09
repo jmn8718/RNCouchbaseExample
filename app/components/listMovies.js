@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import {
-  ScrollView,
+  ListView,
 } from 'react-native';
 
 import Movie from './movie';
 
+
 export default class ListMovies extends Component {
   render() {
     return (
-      <ScrollView style={this.props.style}>
-        {this.props.data.slice(0, 10).map((movie, index) => <Movie key={index} data={movie} />)}
-      </ScrollView>
+      <ListView
+        dataSource={this.props.data}
+        renderRow={(rowData, sectionID, rowID, highlightRow) => <Movie key={rowID} data={rowData} />}
+      />
     )
   }
 }

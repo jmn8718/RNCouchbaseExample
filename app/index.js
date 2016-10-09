@@ -14,14 +14,17 @@ import {
 
 import ListMovies from './components/listMovies';
 
-const SG_URL = '10.111.4.12:4984';
+const SG_URL = '192.168.1.5:4984';
 const DB_NAME = 'moviesapp';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
     this.state = {
+      dataSource: ds.cloneWithRows([]),
       data: [],
       sequence: '',
       filteredMovies: '',
@@ -70,7 +73,10 @@ export default class App extends Component {
         })
         // .then(() => database.getDocuments())
         .then(() => database.queryView('main', 'movies', {include_docs: true}))
-        .then(res => this.setState({ data: res.rows }))
+        .then(res => this.setState({
+          data: res.rows,
+          dataSource: this.state.dataSource.cloneWithRows(res.rows),
+        }))
         .catch(e => console.log('ERROR', e));
     })
   }
@@ -86,8 +92,11 @@ export default class App extends Component {
         <Text>
           Movies published in 2004: {this.state.filteredMovies}
         </Text>
+        <Text>
+          MOVIES: {this.state.data.length}
+        </Text>
         <ListMovies
-          data={this.state.data}
+          data={this.state.dataSource}
           style={styles.listView}
         />
       </View>

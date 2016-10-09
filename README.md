@@ -50,7 +50,7 @@ docker run --net=couchbase -d --name couchbase-server -p 8091-8094:8091-8094 -p 
 ```
 Start a Sync Gateway container in the couchbase network
 ```
-docker run --net=couchbase --name couchbase-sync-gateway-moviesapp -p 4984:4984 -d -v /tmp:/tmp/config couchbase/sync-gateway https://raw.githubusercontent.com/jmn8718/RNCouchbaseExample/develop/sync-gateway-config.json
+docker run --net=couchbase --name couchbase-sync-gateway-moviesapp -p 4984:4984 -d -v /tmp:/tmp/config couchbase/sync-gateway https://raw.githubusercontent.com/jmn8718/RNCouchbaseExample/master/sync-gateway-config.json
 ```
 
 ## Example Data
