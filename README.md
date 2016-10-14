@@ -2,6 +2,10 @@
 
 ## Installation
 
+Install dependencies:
+```
+npm install
+```
 Install the React Native Couchbase Lite module:
 ```
 npm install --save react-native-couchbase-lite
